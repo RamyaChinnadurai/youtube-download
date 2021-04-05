@@ -16,41 +16,51 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>YT downloader by Rams</title>
+        <title>YT downloader</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="py-12 flex justify-center">
-        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <h1 className="text-xl"> YT downloader </h1>
-          <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div className="p-6 bg-white border-b border-gray-200">
-              <div className="mb-4">
-                <label className="text-xl text-gray-600 justify-center">
-                  Paste the youtube link
-                </label>
-              </div>
+      <div className="py-12 w-full flex flex-wrap content-center">
+        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 w-full">
+          <h1 className="text-xl flex justify-center"> YT downloader </h1>
+          <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full">
+            <div className="p-6 bg-white border-b border-gray-200 flex ">
               <div className="flex">
-              <input
-                  type="text"
-                  className="border-2 border-gray-300 p-2 w-full"
-                  name="title"
-                  id="title"
-                  value={url}
-                  onChange={(e)=>setUrl(e.target.value)}
-                  placeholder="Paste the youtube link"
-                  required
-                ></input>
-                <button className="p-3 flex w-full  bg-blue-500 text-white hover:bg-blue-400"> Convert video </button>
+                <input
+                    type="text"
+                    className="border-2 m-1.5 border-gray-300 p-2 w-full"
+                    name="title"
+                    id="title"
+                    value={url}
+                    onChange={(e)=>setUrl(e.target.value)}
+                    placeholder="Paste the youtube link"
+                    required
+                  ></input>
+               <button
+                className="p-3 m-1.5 flex w-full justify-center bg-blue-500 text-white hover:bg-blue-400"
+                required
+                onClick={() => handleClick()}
+              >
+              Convert Video
+            </button>
               </div>
             </div>
+            <div className="p-3 flex w-full justify-center">
             <button
-              className="p-3 flex w-full justify-center bg-blue-500 text-white hover:bg-blue-400"
+              className="p-3 m-1.5 flex w-full justify-center bg-blue-500 text-white hover:bg-blue-400"
               required
               onClick={() => handleClick()}
             >
-              Download Video
+              Download mp3
             </button>
+            <button
+              className="p-3 m-1.5 flex w-full justify-center bg-blue-500 text-white hover:bg-blue-400"
+              required
+              onClick={() => handleClick()}
+            >
+              Download mp4
+            </button>
+            </div>
           </div>
         </div>
       </div>
