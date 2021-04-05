@@ -5,6 +5,8 @@ import { FiDownloadCloud } from "react-icons/fi";
 
 export default function Home() {
   const [url, setUrl] = useState("");
+  const [ downloadLink, setDownloadedLink ] = useState("");
+
 //https://youtu.be/eYq7WapuDLU
   const handleClick = async() => {
     const requestOptions = {
@@ -13,12 +15,20 @@ export default function Home() {
       body: JSON.stringify({ url })
     };
     const response = await fetch("http://localhost:3000/api/yt", requestOptions);
-    // var a = document.createElement('a');
-  	// 	a.href = `http://localhost:3000/video.mp4`;
-  	// 	a.setAttribute('download', '');
-		// a.click();
-    console.log(response);
+    const res = await response.json(); 
+    console.log('res: ', res);
+    const title = res.title;
+    console.log('title: ', title);
+    setDownloadedLink(title);
   };
+
+  const handleMp4 = () => {
+     let a = document.createElement('a');
+  	  	 a.href = `http://localhost:3000/${downloadLink}.mp4`;
+         console.log('downloadLink: ', downloadLink);
+         a.setAttribute('download', `${downloadLink}.mp4`);
+         a.click();
+  }
 
   return (
     <div>
@@ -63,12 +73,13 @@ export default function Home() {
             <button
               className="p-3 m-1.5 flex w-48 justify-center bg-blue-500 text-white hover:bg-blue-400"
               required
-              onClick={() => handleClick()}
+              onClick={() => handleMp4()}
             >
               Download mp4
             </button>
             </div>
           </div>
+          { downloadLink!== "" && <h3 className="flex justify-center"> Video Converted. Ready for download!</h3>}
         </div>
       </div>
     </div>

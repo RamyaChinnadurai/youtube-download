@@ -1,11 +1,8 @@
-import { title } from 'process';
-
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 
   export default async function handler(req, res) {
     if (req.method === 'POST') {
-      
       var url = req.body.url;
       const videoInfo = await ytdl.getBasicInfo(url, {
         format: 'mp4'
@@ -17,7 +14,6 @@ const ytdl = require('ytdl-core');
       await ytdl(url).pipe(fs.createWriteStream(`public/${title}.mp4`));
       res.status(200).json({ result: true, title })
     } else {
-      // Handle any other HTTP method
       res.status(400).json({ result: false })
     }
   }
