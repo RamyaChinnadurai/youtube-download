@@ -5,9 +5,14 @@ import { FiDownloadCloud } from "react-icons/fi";
 
 export default function Home() {
   const [url, setUrl] = useState("");
-
+//https://youtu.be/eYq7WapuDLU
   const handleClick = async() => {
-    const response = await fetch("http://localhost:3000/api/yt");
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    };
+    const response = await fetch("http://localhost:3000/api/yt", requestOptions);
     // var a = document.createElement('a');
   	// 	a.href = `http://localhost:3000/video.mp4`;
   	// 	a.setAttribute('download', '');
