@@ -29,6 +29,14 @@ export default function Home() {
          a.setAttribute('download', `${downloadLink}.mp4`);
          a.click();
   }
+  
+  const handleMp3 = () => {
+     let a = document.createElement('a');
+  	  	 a.href = `http://localhost:3000/${downloadLink}.mp3`;
+         console.log('downloadLink: ', downloadLink);
+         a.setAttribute('download', `${downloadLink}.mp3`);
+         a.click();
+  }
 
   return (
     <div>
@@ -66,7 +74,7 @@ export default function Home() {
             <button
               className="p-3 m-1.5 flex w-56 justify-center bg-blue-500 text-white hover:bg-blue-400"
               required
-              onClick={() => handleClick()}
+              onClick={() => handleMp3()}
             >
               Download mp3
             </button>
