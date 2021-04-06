@@ -16,9 +16,7 @@ export default function Home() {
     };
     const response = await fetch("http://localhost:3000/api/yt", requestOptions);
     const res = await response.json(); 
-    console.log('res: ', res);
     const title = res.title;
-    console.log('title: ', title);
     setDownloadedLink(title);
   };
 
