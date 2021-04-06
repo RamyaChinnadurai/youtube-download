@@ -8,6 +8,7 @@ const ytdl = require('ytdl-core');
         format: 'mp4'
       }, (err, info) => {
         title = info.player_response.videoDetails.title.replace(/[^\x00-\x7F]/g, "");
+        encodeURI(title)
         return title;
       });
       const title = videoInfo.videoDetails.title || "video.mp4";
