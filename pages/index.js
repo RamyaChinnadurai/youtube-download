@@ -14,7 +14,7 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url })
     };
-    const response = await fetch("http://localhost:3000/api/yt", requestOptions);
+    const response = await fetch("https://youtube-downloader-psi.vercel.app/api/yt", requestOptions);
     const res = await response.json(); 
     const title = res.title;
     setDownloadedLink(title);
@@ -22,7 +22,7 @@ export default function Home() {
 
   const handleMp4 = () => {
      let a = document.createElement('a');
-  	  	 a.href = `http://localhost:3000/${downloadLink}.mp4`;
+  	  	 a.href = `https://youtube-downloader-psi.vercel.app/${downloadLink}.mp4`;
          console.log('downloadLink: ', downloadLink);
          a.setAttribute('download', `${downloadLink}.mp4`);
          a.click();
@@ -30,7 +30,7 @@ export default function Home() {
   
   const handleMp3 = () => {
      let a = document.createElement('a');
-  	  	 a.href = `http://localhost:3000/${downloadLink}.mp3`;
+  	  	 a.href = `https://youtube-downloader-psi.vercel.app/${downloadLink}.mp3`;
          console.log('downloadLink: ', downloadLink);
          a.setAttribute('download', `${downloadLink}.mp3`);
          a.click();
