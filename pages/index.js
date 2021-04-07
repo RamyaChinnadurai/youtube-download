@@ -13,7 +13,7 @@ export default function Home() {
   const liveDomain = "https://youtube-downloader-psi.vercel.app";
   const localDomain = "http://localhost:3000";
 
-  const domain = localDomain;
+  const domain = liveDomain;
   
 //https://youtu.be/eYq7WapuDLU
 
