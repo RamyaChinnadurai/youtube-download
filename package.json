@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "de v": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "downloadjs": "^1.4.7",
     "firebase": "^8.3.2",
     "next": "10.0.9",
     "react": "17.0.1",

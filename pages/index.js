@@ -1,28 +1,45 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import { FiDownloadCloud } from "react-icons/fi";
+import download from 'downloadjs';
 
 
 export default function Home() {
   const [url, setUrl] = useState("");
   const [ downloadLink, setDownloadedLink ] = useState("");
 
+  const liveDomain = "https://youtube-downloader-psi.vercel.app";
+  const localDomain = "http://localhost:3000";
+
+  const domain = localDomain;
+
 //https://youtu.be/eYq7WapuDLU
   const handleClick = async() => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url })
-    };
-    const response = await fetch("https://youtube-downloader-psi.vercel.app/api/yt", requestOptions);
-    const res = await response.json(); 
-    const title = res.title;
-    setDownloadedLink(title);
+    try{
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      };
+      fetch(`${domain}/api/yt`, requestOptions)
+      .then( res => res.blob() )
+      .then( blob => {
+        download(blob,"audio","audio/mpeg");
+      });
+      // const res = await response.json(); 
+      // const title = res.title;
+      // setDownloadedLink(title);
+    }
+    catch(err){
+      console.log('err: ', err);
+
+    }
+    
   };
 
   const handleMp4 = () => {
      let a = document.createElement('a');
-  	  	 a.href = `https://youtube-downloader-psi.vercel.app/${downloadLink}.mp4`;
+  	  	 a.href = `${domain}/${downloadLink}.mp4`;
          console.log('downloadLink: ', downloadLink);
          a.setAttribute('download', `${downloadLink}.mp4`);
          a.click();
@@ -30,7 +47,7 @@ export default function Home() {
   
   const handleMp3 = () => {
      let a = document.createElement('a');
-  	  	 a.href = `https://youtube-downloader-psi.vercel.app/${downloadLink}.mp3`;
+  	  	 a.href = `${domain}/${downloadLink}.mp3`;
          console.log('downloadLink: ', downloadLink);
          a.setAttribute('download', `${downloadLink}.mp3`);
          a.click();
