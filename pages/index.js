@@ -13,7 +13,7 @@ export default function Home() {
   const liveDomain = "https://youtube-downloader-psi.vercel.app";
   const localDomain = "http://localhost:3000";
 
-  const domain = liveDomain;
+  const domain = localDomain;
   
   const getTitle = async (videoID) => {
       const youtubeAPI = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoID}&fields=items(id%2Csnippet)&key=${ytApiKey}`;
@@ -47,12 +47,18 @@ export default function Home() {
         fetch(`${domain}/api/yt`, requestOptions)
         .then( res => res.blob() )
         .then( blob => {
-          download(blob,`${title}.mp4`,"video/mp4");
-          setInfo("Ready for download!");
+          const sizeInBytes = blob.size;
+          console.log('sizeInBytes: ', sizeInBytes);
+          if(sizeInBytes <=0){
+            setInfo("Unable to download! Maybe File size is too high. Try to download video less than 5MB");
+          }else{
+            download(blob,`${title}.mp4`,"video/mp4");
+            setInfo("Ready for download!");
+          }
         });
       }
       catch(err){
-        console.log('err: ', err);
+        setInfo("Unable to download! Maybe File size is too high. Try to download video less than 5MB");
       }
     }else{
       setInfo("Invalid URL");
@@ -74,8 +80,14 @@ export default function Home() {
         fetch(`${domain}/api/yt`, requestOptions)
         .then( res => res.blob() )
         .then( blob => {
-          download(blob,`${title}.mp3`,"audio/mpeg");
-          setInfo("Ready for download!");
+          const sizeInBytes = blob.size;
+          console.log('sizeInBytes: ', sizeInBytes);
+          if(sizeInBytes<=0){
+            setInfo("Unable to download! Maybe File size is too high. Try to download video less than 5MB");
+          }else{
+            download(blob,`${title}.mp3`,"audio/mpeg");
+            setInfo("Ready for download!");
+          }
         });
       }
       catch(err){
