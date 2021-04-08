@@ -13,7 +13,7 @@ export default function Home() {
   const liveDomain = "https://youtube-downloader-psi.vercel.app";
   const localDomain = "http://localhost:3000";
 
-  const domain = localDomain;
+  const domain = liveDomain;
   
   const getTitle = async (videoID) => {
       const youtubeAPI = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoID}&fields=items(id%2Csnippet)&key=${ytApiKey}`;
