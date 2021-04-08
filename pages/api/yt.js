@@ -6,7 +6,7 @@ const ytdl = require('ytdl-core');
         const url  = req.body.url;
         const type = req.body.type;
         if(type === "mp3"){
-          res.setHeader('content-type', "audip/mpeg");
+          res.setHeader('content-type', "audio/mpeg");
           await ytdl(url, {
             format: 'mp3',
             filter: 'audioonly',
