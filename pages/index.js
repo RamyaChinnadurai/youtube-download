@@ -13,10 +13,8 @@ export default function Home() {
   const liveDomain = "https://youtube-downloader-psi.vercel.app";
   const localDomain = "http://localhost:3000";
 
-  const domain = liveDomain;
+  const domain = localDomain;
   
-//https://youtu.be/eYq7WapuDLU
-
   const getTitle = async (videoID) => {
       const youtubeAPI = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoID}&fields=items(id%2Csnippet)&key=${ytApiKey}`;
       let response = videoID && await fetch(youtubeAPI);
@@ -24,9 +22,19 @@ export default function Home() {
       const title  = res.items[0].snippet.title;
       return title;
   }
+
+  const getVideoID = (url) => {
+    if(url.match(/watch/)){
+      const videoID = url.split("/")[3].split("?")[1].split("=")[1];
+      return videoID;
+    }else if(url.match(/youtu.be/)){
+      const videoID = url!="" && url.split("/")[3];
+      return videoID
+    }
+  }
   
   const handleMp4 = async () => {
-    const videoID = url!="" && url.split("/")[3];
+    const videoID = getVideoID(url);
     setInfo("Processing the video...");
     if(videoID){
       const title = await getTitle(videoID);
@@ -53,7 +61,7 @@ export default function Home() {
   }
   
   const handleMp3 = async () => {
-    const videoID = url!="" && url.split("/")[3];
+    const videoID = getVideoID(url);
     setInfo("Processing the video...");
     if(videoID){
       const title = await getTitle(videoID);
