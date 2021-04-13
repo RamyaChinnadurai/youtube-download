@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { FiDownloadCloud } from "react-icons/fi";
 import download from 'downloadjs';
@@ -22,6 +22,14 @@ export default function Home() {
       const title  = res.items[0].snippet.title;
       return title;
   }
+
+  useEffect(()=>{
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(err => console.error("Service worker registration failed", err))
+    } else {
+        console.log("Service worker not supported");
+    }
+  },[])
 
   const getVideoID = (url) => {
     if(url.match(/watch/)){
@@ -102,7 +110,7 @@ export default function Home() {
     <div>
       <Head>
         <title>YT downloader</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.png" />
       </Head>
 
       <div className="py-12 w-full  h-screen">
