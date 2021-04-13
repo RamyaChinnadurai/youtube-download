@@ -1,0 +1,21 @@
+{
+    "name": "Youtube downloader",
+    "short-name": "YT-D",
+    "icons": [
+        {
+            "src": "/icon-192.png",
+            "sizes": "192*192", 
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512*512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "ffffff",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait"
+}
