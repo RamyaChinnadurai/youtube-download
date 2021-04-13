@@ -3,6 +3,11 @@
     "short-name": "YT-D",
     "icons": [
         {
+            "src": "/icon-144.png",
+            "sizes": "144*144",
+            "type": "image/png"
+        },
+        {
             "src": "/icon-192.png",
             "sizes": "192*192", 
             "type": "image/png"
