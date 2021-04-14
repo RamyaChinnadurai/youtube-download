@@ -115,8 +115,8 @@ export default function Home() {
 
       <div className="py-12 w-full  h-screen">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 w-full relative top-1/4">
-          <h1 className="text-4xl flex justify-center"> <FiDownloadCloud/> &nbsp; YT DOWNLOADER </h1>
-          <h6 className="text-xs py-1 flex justify-center"> Sample video link : https://youtu.be/videoID </h6>
+          <h3 className="text-4xl flex justify-center"> <FiDownloadCloud/> &nbsp; YT DOWNLOADER </h3>
+          <h4 className="text-xs py-1 flex justify-center"> Sample video link : https://youtu.be/videoID </h4>
           <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full">
             <div className="p-6 bg-white border-b border-gray-200 flex justify-center w-full">
               <div className="flex w-4/5">
@@ -137,14 +137,14 @@ export default function Home() {
             </div>
             <div className="p-3 flex w-full justify-center">
             <button
-              className="p-3 m-1.5 flex w-56 justify-center bg-blue-500 text-white hover:bg-blue-400"
+              className="p-3 m-1.5 flex w-56 justify-center bg-blue-900 text-white hover:bg-blue-600"
               required
               onClick={() => handleMp3()}
             >
               Download mp3
             </button>
             <button
-              className="p-3 m-1.5 flex w-48 justify-center bg-blue-500 text-white hover:bg-blue-400"
+              className="p-3 m-1.5 flex w-48 justify-center bg-blue-900 text-white hover:bg-blue-600"
               required
               onClick={() => handleMp4()}
             >
