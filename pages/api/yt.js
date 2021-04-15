@@ -1,4 +1,5 @@
 const ytdl = require('ytdl-core');
+const fs = require('fs');
 
   export default async function handler(req, res) {
     if (req.method === 'POST') {
@@ -10,7 +11,7 @@ const ytdl = require('ytdl-core');
           await ytdl(url, {
             format: 'mp3',
             filter: 'audioonly',
-          }).pipe(res);
+          }).pipe(fs.createWriteStream(`public/${title}.mp3`));
         }else if(type === "mp4"){
           res.setHeader('content-type', "video/mp4");
           await ytdl(url).pipe(res);
