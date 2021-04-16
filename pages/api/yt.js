@@ -11,7 +11,7 @@ const fs = require('fs');
           await ytdl(url, {
             format: 'mp3',
             filter: 'audioonly',
-          }).pipe(fs.createWriteStream(`public/${title}.mp3`));
+          }).pipe(res);
         }else if(type === "mp4"){
           res.setHeader('content-type', "video/mp4");
           await ytdl(url).pipe(res);
