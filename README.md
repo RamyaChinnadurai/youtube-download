@@ -21,7 +21,3 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 ## Demo 
 
  [Website](https://youtube-downloader-psi.vercel.app/)
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
